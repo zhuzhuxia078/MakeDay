@@ -1,0 +1,21 @@
+{
+  "name": "makeday",
+  "version": "1.0.0",
+  "description": "A full-stack app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhuzhuxia078/MakeDay.git"
+  },
+  "author": "zhuqinyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhuzhuxia078/MakeDay/issues"
+  },
+  "homepage": "https://github.com/zhuzhuxia078/MakeDay#readme"
+}
