@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon server/index.js",
+    "build": "webpack -w",
     "test": "jest"
   },
   "repository": {
@@ -17,5 +18,19 @@
   "bugs": {
     "url": "https://github.com/zhuzhuxia078/MakeDay/issues"
   },
-  "homepage": "https://github.com/zhuzhuxia078/MakeDay#readme"
+  "homepage": "https://github.com/zhuzhuxia078/MakeDay#readme",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0"
+  }
 }
