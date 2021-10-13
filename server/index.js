@@ -19,6 +19,18 @@ app.get('/boxes', (req, res) => {
   });
 });
 
+app.post('/boxes', (req, res) => {
+  const product = req.body;
+  db.addBox(product, (error, row) => {
+    if (error) {
+      throw error;
+    } else {
+      res.status(201).json(row);
+    }
+  })
+})
+
+
 
 app.listen(port, () => {
   console.log(`App is listening to port ${port}`)

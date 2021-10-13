@@ -16,5 +16,5 @@ CREATE TABLE my_box (
   box_name VARCHAR(50) NOT NULL,
   product_url VARCHAR(1000) NOT NULL,
   date date,
-  amount decimal(10, 2) NOT NULL
+  price decimal(10, 2) NOT NULL
 );
