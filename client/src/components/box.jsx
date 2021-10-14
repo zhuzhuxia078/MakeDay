@@ -8,11 +8,13 @@ class Box extends React.Component {
       box: []
     }
     this.getBox = this.getBox.bind(this);
+    this.addBox = this.addBox.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.getBox();
-  // }
+  componentDidMount() {
+    this.getBox();
+  }
 
   getBox() {
     axios.get('/boxes')
@@ -27,6 +29,26 @@ class Box extends React.Component {
       });
   }
 
+  addBox(product) {
+    axios.post('/boxes', product)
+      .then((res) => {
+        console.log('react post success: ', res)
+        this.getBox();
+      })
+      .catch((error) => {
+        throw error;
+      })
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    this.addBox({
+      box_name: 'bronzer',
+      product_url:  'https://well.ca/products/maybelline-facestudio-master-contour_120303.html?cat=328',
+      price: 15.99
+    })
+  }
+
   render() {
     return (
       <div>
@@ -34,6 +56,7 @@ class Box extends React.Component {
         {this.state.box.map(box =>
             <div key = {box.id}>{box.id}</div>
         )}
+        <button onClick = {this.onSubmit}>Add to box</button>
       </div>
     )
   }
