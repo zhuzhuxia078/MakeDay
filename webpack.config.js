@@ -10,6 +10,25 @@ module.exports = {
     path: DIST_DIR,
   },
   module: {
+    // rules: [
+    //   // Process any .js or .jsx file with Babel
+    //   {
+    //     test: /\.jsx?$/,
+    //     exclude: /node_modules/,
+    //     loaders: ['babel-loader']
+    //   },
+    //   {
+    //     test: /\.css$/,
+    //     loader: 'style-loader!css-loader'
+    //   },
+    //   {
+    //     test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+    //     loader: 'url-loader',
+    //     options: {
+    //       limit: 10000
+    //     }
+    //   }
+    // ]
     rules: [
       {
         test: /\.jsx?/,
@@ -17,7 +36,16 @@ module.exports = {
         options: {
           presets: ["@babel/preset-env", "@babel/preset-react"],
         },
-      },
+      },{
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },{
+        test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 100000
+        }
+      }
     ],
   },
 };

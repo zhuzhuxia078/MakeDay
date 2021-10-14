@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Box from './box.jsx';
-import Type from './type.jsx'
+import Type from './type.jsx';
+import { Container, Row } from 'react-bootstrap';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -76,8 +78,12 @@ class App extends React.Component {
     return (
       <div>
         <h1>MakeDay</h1>
-        <Box getBox = {this.getBox} hideBox = {this.hideBox} updateBox = {this.updateBox} deleteProduct = {this.deleteProduct} box={this.state.box}/>
+        <Container>
+          <Row>
+            <Box getBox = {this.getBox} hideBox = {this.hideBox} updateBox = {this.updateBox} deleteProduct = {this.deleteProduct} box={this.state.box}/>
+          </Row>
         <Type addBox = {this.addBox}/>
+        </Container>
       </div>
     )
   }
