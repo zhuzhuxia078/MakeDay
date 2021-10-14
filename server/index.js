@@ -10,6 +10,7 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 // routes
   // ---- /boxes
 app.get('/boxes', (req, res) => {
+  console.log('test get in server')
   db.getBoxes((error, rows) => {
     if (error) {
       throw error;
@@ -20,8 +21,10 @@ app.get('/boxes', (req, res) => {
 });
 
 app.post('/boxes', (req, res) => {
+  console.log('req.body', req.body)
   const product = req.body;
   db.addBox(product, (error, row) => {
+    console.log(req.body);
     if (error) {
       throw error;
     } else {
