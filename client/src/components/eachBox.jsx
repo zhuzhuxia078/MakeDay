@@ -9,10 +9,13 @@ class EachBox extends React.Component {
     const deleteProduct = this.props.deleteProduct;
     return (
       <div key = {box.id}>
-        <img src = {`${box.product_url}`}/>
-        {box.id}
-        {box.price}
-        <button id={box.id} onClick = {(e) => deleteProduct(e.target.id)}>Delete me</button>
+        <img className = 'img' src = {`${box.product_url}`}/>
+        <div className='tag'>
+        The type is : {box.box_name}
+        You have spent: ${box.price}
+        <br/>
+        <button className = 'button' id={box.id} onClick = {(e) => deleteProduct(e.target.id)}>Delete me</button>
+        </div>
       </div>
     )
   }

@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import EachType from './eachType.jsx';
+import { Form } from 'react-bootstrap';
+import Grid from '@material-ui/core/Grid';
 
 class Type extends React.Component {
   constructor(props) {
@@ -68,9 +70,8 @@ class Type extends React.Component {
   render() {
     return (
       <div>
-        <form>
-          <label>
-            <select value = {this.state.type} onChange={this.handleChange}>
+        <Form.Select aria-label="Default select example" onChange={this.handleChange}>
+              <option>Open to select type</option>
               <option value = 'Eyebrow'>Eyebrow</option>
               <option value = 'Blush'>Blush</option>
               <option value = 'Bronzer'>Bronzer</option>
@@ -81,9 +82,8 @@ class Type extends React.Component {
               <option value = 'Lipstick'>Lipstick</option>
               <option value = 'Mascara'>Mascara</option>
               <option value = 'Nail polish'>polish</option>
-            </select>
-          </label>
-        </form>
+
+        </Form.Select>
         {/* <button name = 'Eyebrow' onClick = {(e) => this.handleClick(e)}>Eyebrow</button>
         <button name = 'Blush' onClick = {(e) => this.handleClick(e)}>Blush</button>
         <button name = 'Bronzer' onClick = {(e) => this.handleClick(e)}>Bronzer</button>
@@ -94,9 +94,13 @@ class Type extends React.Component {
         <button name = 'Lipstick' onClick = {(e) => this.handleClick(e)}>Lipstick</button>
         <button name = 'Mascara' onClick = {(e) => this.handleClick(e)}>Mascara</button>
         <button name = 'Nail polish' onClick = {(e) => this.handleClick(e)}>Nail polish</button> */}
+        <Grid container>
         {this.state.list.map(product =>
+            <Grid item xs={3} key = {product.id}>
             <EachType key = {product.id} product = {product} addBox = {this.props.addBox}/>
+            </Grid>
         )}
+        </Grid>
       </div>
     )
   }

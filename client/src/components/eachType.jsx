@@ -26,17 +26,23 @@ class EachType extends React.Component {
       product_url: this.state.product_url,
       price: this.state.price
     })
+    this.props.getBox();
   }
 
   render() {
     return (
       <div>
-        <img src={`${this.props.product.image_link}`}/>
+        <img className='img' src={`${this.props.product.image_link}`}/>
         <div onClick = {this.handleClick}>
-          {this.props.product.brand}
-          {this.props.product.id}
+          <div className = 'tag'>
+          Brand: {this.props.product.brand}
+          <br />
+          Category: {this.props.product.category}
+          <br />
+          price: ${this.props.product.price}
+          </div>
         </div>
-        <button onClick = {this.handleAdd}>Add to Box</button>
+        <button className = 'button' onClick = {this.handleAdd}>Add to Box</button>
       </div>
     )
   }

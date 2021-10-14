@@ -18,7 +18,11 @@ class App extends React.Component {
     this.deleteProduct = this.deleteProduct.bind(this);
   }
 
-  // componentDidMount() {
+  componentDidMount() {
+    this.getBox();
+  }
+
+  // componentDidUpdate() {
   //   this.getBox();
   // }
 
@@ -77,12 +81,15 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>MakeDay</h1>
+        <h1 className = 'title'>MakeDay</h1>
+        <div className = 'text'>
+          We have spent a lot of time deciding what we have in our Make-up box. This App will help you have a look at what you have in your box based according to types. Will also tell you how much you have spent.
+        </div>
         <Container>
           <Row>
             <Box getBox = {this.getBox} hideBox = {this.hideBox} updateBox = {this.updateBox} deleteProduct = {this.deleteProduct} box={this.state.box}/>
           </Row>
-        <Type addBox = {this.addBox}/>
+        <Type addBox = {this.addBox} getBox = {this.getBox}/>
         </Container>
       </div>
     )

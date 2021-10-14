@@ -11,20 +11,24 @@ class Box extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.props.getBox()
+  }
+
   render() {
     return (
       <div>
         <Container>
           <Row>
-            <Col><Button variant="primary" onClick = {this.props.getBox}>My box</Button></Col>
-            <Col><Button onClick = {this.props.hideBox}>Hide box</Button></Col>
+            <Col><button className = 'titleButton' onClick = {this.props.getBox}>My box</button></Col>
+            <Col><button className = 'titleButton' onClick = {this.props.hideBox}>Hide box</button></Col>
           </Row>
         </Container>
           <Grid container>
             {this.props.box.map(box =>
-
-                <EachBox key = {box.id} box = { box } deleteProduct = {this.props.deleteProduct}/>
-
+                <Grid item xs={3} key = {box.id}>
+                 <EachBox key = {box.id} box = { box } deleteProduct = {this.props.deleteProduct}/>
+                </Grid>
             )}
           </Grid>
 
