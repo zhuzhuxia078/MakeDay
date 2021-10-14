@@ -33,6 +33,17 @@ app.post('/boxes', (req, res) => {
   })
 })
 
+app.delete('/boxes/:id', (req, res) => {
+  console.log('delete req.params.id', req.params.id)
+  db.deleteItem(req.params.id, (err, row) => {
+    if(err) {
+      console.log('error in delete query', err);
+      return
+    }
+    res.json(row[0]);
+  })
+})
+
 
 
 app.listen(port, () => {

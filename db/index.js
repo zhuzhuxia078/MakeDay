@@ -31,7 +31,37 @@ const addBox = function(product, callback) {
   })
 }
 
+const getById = (ID, callback) => {
+  const query = `SELECT * FROM my_box WHERE ID=${ID}`;
+  db.query(query, (error, row) => {
+    if(error) {
+      console.log('failed getting by ID', error);
+    } else {
+      callback(null, row);
+    }
+  })
+}
+
+const deleteItem = (productId, callback) => {
+  getById(productId, (err, row) => {
+    if (err) {
+      console.log('failed getting product by ID', err)
+      callback(err, null);
+      return;
+    }
+    const query = `DELETE FROM my_box WHERE ID=${productId}`;
+    db.query(query, (err) => {
+    if (err) {
+      console.log(`error deleting product with id ${productId}`, err)
+      return;
+      }
+      callback(null, row);
+    })
+  })
+}
+
 module.exports = {
   getBoxes,
-  addBox
+  addBox,
+  deleteItem
 }

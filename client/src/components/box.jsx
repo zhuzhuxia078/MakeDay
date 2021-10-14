@@ -13,8 +13,7 @@ class Box extends React.Component {
       <div>
         <button onClick = {this.props.getBox}>My box</button>
         {this.props.box.map(box =>
-            <EachBox key = {box.id} box = { box }/>
-
+            <EachBox key = {box.id} box = { box } deleteProduct = {this.props.deleteProduct}/>
         )}
         <button onClick = {this.props.hideBox}>Hide box</button>
       </div>

@@ -34,6 +34,7 @@ class EachType extends React.Component {
         <img src={`${this.props.product.image_link}`}/>
         <div onClick = {this.handleClick}>
           {this.props.product.brand}
+          {this.props.product.id}
         </div>
         <button onClick = {this.handleAdd}>Add to Box</button>
       </div>

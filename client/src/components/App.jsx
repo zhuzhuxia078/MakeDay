@@ -12,6 +12,8 @@ class App extends React.Component {
     this.getBox = this.getBox.bind(this);
     this.addBox = this.addBox.bind(this);
     this.hideBox = this.hideBox.bind(this);
+    this.updateBox = this.updateBox.bind(this);
+    this.deleteProduct = this.deleteProduct.bind(this);
   }
 
   // componentDidMount() {
@@ -48,13 +50,33 @@ class App extends React.Component {
       })
   }
 
+  updateBox(product) {
+    axios.put('/boxes/:price', product)
+      .then((res) => {
+        this.getBox();
+      })
+      .catch((error) => {
+        throw error;
+      })
+  }
+
+  deleteProduct(productID) {
+    // const currProducts = this.state.box;
+    axios.delete(`/boxes/${productID}`)
+      .then((res) => {
+        this.getBox();
+      })
+      .catch((error) => {
+        console.log('error deleting in client: ', error)
+      })
+  }
 
 
   render() {
     return (
       <div>
         <h1>MakeDay</h1>
-        <Box getBox = {this.getBox} hideBox = {this.hideBox} box={this.state.box}/>
+        <Box getBox = {this.getBox} hideBox = {this.hideBox} updateBox = {this.updateBox} deleteProduct = {this.deleteProduct} box={this.state.box}/>
         <Type addBox = {this.addBox}/>
       </div>
     )
