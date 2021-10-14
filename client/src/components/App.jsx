@@ -88,6 +88,7 @@ class App extends React.Component {
     axios.delete(`/boxes/${productID}`)
       .then((res) => {
         this.getBox();
+        this.getPrice();
       })
       .catch((error) => {
         console.log('error deleting in client: ', error)
@@ -103,13 +104,13 @@ class App extends React.Component {
           We have spent a lot of time deciding what we have in our Make-up box. This App will help you have a look at what you have in your box based according to types. Will also tell you how much you have spent.
         </div>
 
-
         <Container>
           <Row>
             <Accordion>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>See my box</Accordion.Header>
                 <Accordion.Body>
+                <div className='box'>
                   <Box
                     getBox = {this.getBox}
                     hideBox = {this.hideBox}
@@ -118,11 +119,14 @@ class App extends React.Component {
                     getPrice = {this.getPrice}
                     box={this.state.box}
                     price = {this.state.price}/>
+                </div>
                 </Accordion.Body>
                </Accordion.Item>
              </Accordion>
           </Row>
+        </Container>
 
+        <Container>
         <Type addBox = {this.addBox} getBox = {this.getBox}/>
         </Container>
 
