@@ -1,12 +1,14 @@
 import React from 'react';
 
+
 class EachType extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       box_name: '',
       product_url: '',
-      price: "0.0"
+      price: "0.0",
+      date: ''
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -16,7 +18,8 @@ class EachType extends React.Component {
     this.setState({
       box_name: this.props.product.product_type,
       product_url: this.props.product.image_link,
-      price: this.props.product.price
+      price: this.props.product.price,
+      date: new Date().toISOString().slice(0, 19).replace('T', ' ')
     })
   }
 
@@ -24,7 +27,8 @@ class EachType extends React.Component {
     this.props.addBox({
       box_name: this.state.box_name,
       product_url: this.state.product_url,
-      price: this.state.price
+      price: this.state.price,
+      date: this.state.date
     })
   }
 

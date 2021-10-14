@@ -12,7 +12,12 @@ class EachBox extends React.Component {
         <img className = 'img' src = {`${box.product_url}`}/>
         <div className='tag'>
         The type is : {box.box_name}
+        <br />
         You have spent: ${box.price}
+        <br/>
+        Added on:
+        <br/>
+        {box.date.slice(0,10)}
         <br/>
         <button className = 'button' id={box.id} onClick = {(e) => deleteProduct(e.target.id)}>Delete me</button>
         </div>

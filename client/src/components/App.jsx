@@ -2,24 +2,27 @@ import React from 'react';
 import axios from 'axios';
 import Box from './box.jsx';
 import Type from './type.jsx';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Accordion } from 'react-bootstrap';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      box: []
+      box: [],
+      price: ''
     }
     this.getBox = this.getBox.bind(this);
     this.addBox = this.addBox.bind(this);
     this.hideBox = this.hideBox.bind(this);
     this.updateBox = this.updateBox.bind(this);
     this.deleteProduct = this.deleteProduct.bind(this);
+    this.getPrice = this.getPrice.bind(this);
   }
 
   componentDidMount() {
     this.getBox();
+    this.getPrice();
   }
 
   // componentDidUpdate() {
@@ -29,9 +32,22 @@ class App extends React.Component {
   getBox() {
     axios.get('/boxes')
       .then((res) => {
-        console.log('react get box success: ', res);
+        //console.log('react get box success: ', res);
         this.setState({
           box: res.data
+        });
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }
+
+  getPrice() {
+    axios.get('/price')
+      .then((res) => {
+        console.log('react get price success: ', res);
+        this.setState({
+          price: res.data[0]["SUM(price)"]
         });
       })
       .catch((error) => {
@@ -50,6 +66,7 @@ class App extends React.Component {
       .then((res) => {
         console.log('react post success: ', product)
         this.getBox();
+        this.getPrice();
       })
       .catch((error) => {
         throw error;
@@ -85,12 +102,30 @@ class App extends React.Component {
         <div className = 'text'>
           We have spent a lot of time deciding what we have in our Make-up box. This App will help you have a look at what you have in your box based according to types. Will also tell you how much you have spent.
         </div>
+
+
         <Container>
           <Row>
-            <Box getBox = {this.getBox} hideBox = {this.hideBox} updateBox = {this.updateBox} deleteProduct = {this.deleteProduct} box={this.state.box}/>
+            <Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>See my box</Accordion.Header>
+                <Accordion.Body>
+                  <Box
+                    getBox = {this.getBox}
+                    hideBox = {this.hideBox}
+                    updateBox = {this.updateBox}
+                    deleteProduct = {this.deleteProduct}
+                    getPrice = {this.getPrice}
+                    box={this.state.box}
+                    price = {this.state.price}/>
+                </Accordion.Body>
+               </Accordion.Item>
+             </Accordion>
           </Row>
+
         <Type addBox = {this.addBox} getBox = {this.getBox}/>
         </Container>
+
       </div>
     )
   }

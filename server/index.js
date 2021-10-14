@@ -20,6 +20,17 @@ app.get('/boxes', (req, res) => {
   });
 });
 
+app.get('/price', (req, res) => {
+  console.log('test price in server')
+  db.getPrice((error, row) => {
+    if(error) {
+      console.log('get price error')
+    } else {
+      res.json(row);
+    }
+  })
+})
+
 app.post('/boxes', (req, res) => {
   console.log('req.body', req.body)
   const product = req.body;

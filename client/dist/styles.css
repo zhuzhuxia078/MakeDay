@@ -27,6 +27,14 @@ img:hover {
   text-align: center;
 }
 
+.price {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+  color: #6F3B48;
+}
+
 .titleButton {
   background-color: #E5CCC8;
   color: #694834;

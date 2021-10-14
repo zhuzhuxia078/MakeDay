@@ -17,9 +17,9 @@ class Type extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    this.getTypes()
-  }
+  // componentDidMount() {
+  //   this.getTypes()
+  // }
 
   componentDidUpdate() {
     this.getTypes()
