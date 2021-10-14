@@ -14,6 +14,10 @@ class EachType extends React.Component {
     this.handleAdd = this.handleAdd.bind(this);
   }
 
+  //  componentDidMount() {
+  //   this.props.getTypes()
+  // }
+
   handleClick() {
     this.setState({
       box_name: this.props.product.product_type,

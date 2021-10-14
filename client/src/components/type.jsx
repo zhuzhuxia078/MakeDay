@@ -46,7 +46,7 @@ class Type extends React.Component {
     this.setState({
       type: e.target.name
     })
-    this.getTypes();
+    // this.getTypes();
   }
 
   handleChange(e) {
@@ -97,7 +97,7 @@ class Type extends React.Component {
         <Grid container>
         {this.state.list.map(product =>
             <Grid item xs={3} key = {product.id}>
-            <EachType key = {product.id} product = {product} addBox = {this.props.addBox}/>
+            <EachType key = {product.id} product = {product} addBox = {this.props.addBox} getTypes = {this.getTypes}/>
             </Grid>
         )}
         </Grid>
