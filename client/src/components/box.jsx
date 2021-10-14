@@ -1,6 +1,7 @@
 import React from 'react';
 //import axios from 'axios';
-import Buy from './boxEntry.jsx';
+import EachBox from './eachBox.jsx';
+
 
 class Box extends React.Component {
   constructor(props) {
@@ -12,9 +13,10 @@ class Box extends React.Component {
       <div>
         <button onClick = {this.props.getBox}>My box</button>
         {this.props.box.map(box =>
-            <div key = {box.id}>{box.id}</div>
+            <EachBox key = {box.id} box = { box }/>
+
         )}
-        <Buy addBox = {this.addBox}/>
+        <button onClick = {this.props.hideBox}>Hide box</button>
       </div>
     )
   }

@@ -11,6 +11,7 @@ class App extends React.Component {
     }
     this.getBox = this.getBox.bind(this);
     this.addBox = this.addBox.bind(this);
+    this.hideBox = this.hideBox.bind(this);
   }
 
   // componentDidMount() {
@@ -30,11 +31,17 @@ class App extends React.Component {
       });
   }
 
+  hideBox() {
+    this.setState({
+      box: []
+    })
+  }
+
   addBox(product) {
     axios.post('/boxes', product)
       .then((res) => {
         console.log('react post success: ', product)
-        this.getBox();
+        // this.getBox();
       })
       .catch((error) => {
         throw error;
@@ -42,11 +49,12 @@ class App extends React.Component {
   }
 
 
+
   render() {
     return (
       <div>
         <h1>MakeDay</h1>
-        <Box getBox = {this.getBox} box={this.state.box}/>
+        <Box getBox = {this.getBox} hideBox = {this.hideBox} box={this.state.box}/>
         <Type addBox = {this.addBox}/>
       </div>
     )

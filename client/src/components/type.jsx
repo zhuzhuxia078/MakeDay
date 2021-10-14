@@ -9,7 +9,6 @@ class Type extends React.Component {
       list: []
     }
     this.getTypes = this.getTypes.bind(this);
-    // this.addBox = this.addBox.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -33,16 +32,6 @@ class Type extends React.Component {
       })
   }
 
-  // addBox(product) {
-  //   axios.post('/boxes', product)
-  //     .then((res) => {
-  //       console.log('react post success: ', res)
-  //       this.getBox();
-  //     })
-  //     .catch((error) => {
-  //       throw error;
-  //     })
-  // }
 
   onSubmit(e) {
     e.preventDefault();
@@ -59,11 +48,6 @@ class Type extends React.Component {
       <div>
         {this.state.list.map(product =>
             <EachType key = {product.id} product = {product} addBox = {this.props.addBox}/>
-            // <div key = {product.id}>
-            //   <img src={`${product.image_link}`}/>
-            //   <div onClick = {() => this.setState({box_name: product.product_type})}>{product.product_type}</div>
-            //   <div>{product.price}</div>
-            // </div>
         )}
       </div>
     )

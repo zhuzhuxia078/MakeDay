@@ -18,11 +18,6 @@ class EachType extends React.Component {
       product_url: this.props.product.image_link,
       price: this.props.product.price
     })
-    // this.props.addBox({
-    //   box_name: this.state.box_name,
-    //   product_url: this.state.product_url,
-    //   price: this.state.price
-    // })
   }
 
   handleAdd() {
