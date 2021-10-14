@@ -26,7 +26,6 @@ class EachType extends React.Component {
       product_url: this.state.product_url,
       price: this.state.price
     })
-    this.props.getBox();
   }
 
   render() {

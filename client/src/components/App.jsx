@@ -49,7 +49,7 @@ class App extends React.Component {
     axios.post('/boxes', product)
       .then((res) => {
         console.log('react post success: ', product)
-        // this.getBox();
+        this.getBox();
       })
       .catch((error) => {
         throw error;
